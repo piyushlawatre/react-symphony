@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropType from "prop-types";
 
 //INFO:  We won't keep styles inside the function since it will js will regenerate the variable every time the component is rerendered
 
@@ -24,14 +25,25 @@ const starStyle = {
   // display: "block",
 };
 
-export default function StarRating({ maxStars = 5 }) {
+StarRating.propTypes = {
+  maxStars: PropType.number,
+  default: PropType.number,
+  onSetRating: PropType.func,
+};
+
+export default function StarRating({
+  maxStars = 5,
+  defaultRating = 3,
+  onSetRating,
+}) {
   //INFO:  We won't keep styles inside the function since it will js will regenerate the variable every time the component is rerendered
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
   function handleOnRating(rating) {
     setRating(rating);
+    onSetRating(rating);
   }
   function handleHoverIn(tempRating) {
     setTempRating(tempRating);

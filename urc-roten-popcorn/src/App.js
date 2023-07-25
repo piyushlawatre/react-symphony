@@ -92,7 +92,7 @@ export default function App() {
 
   return (
     <>
-      //INFO: The preferred way of doing is component composition
+      {/* //INFO: The preferred way of doing is component composition */}
       {/* Component Composition */}
       <Navbar>
         <Logo />
